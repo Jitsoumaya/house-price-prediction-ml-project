@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .h_color{
+            color: #512dd3;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #273289;
+            border-radius: 10px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            display: inline-block;
+            border: 1px solid #4054c5;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-container input[type="submit"] {
+            background-color: #2f3397;
+            color: white;
+            border: none;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 1.5em;
+            color: #2725ae;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2 class="h_color">House Price Prediction</h2>
+        <form action="/predict" method="post">
+            <label for="Area">Area(sqft):</label>
+            <input type="number" name="Area" required>
+            
+            <label for="Living_area">Living Area(sqft):</label>
+            <input type="number" step="0.01" name="Living_area" required>
+            
+            <label for="no_floors">Number of Floors:</label>
+            <input type="number" name="no_floors" required>
+            
+            <label for="Bedroom">Number of Bedroom:</label>
+            <input type="number" name="Bedroom" required>
+
+            <label for="Bathrooms">Number of Bathrooms:</label>
+            <input type="number" name="Bathrooms" required>
+
+            <label for="Garage">Number of Garage:</label>
+            <input type="number" name="Garage" required>
+
+            <label for="Age">Age of House(years):</label>
+            <input type="number" name="Age" required>
+
+            <label for="Location">Location Score:</label>
+            <input type="number" name="Location" required>
+
+            <input type="submit" value="Predict Estimated Price">
+        </form>
+        {% if prediction_text%}
+        <div class="result"><h1>{{prediction_text}}</h1></div>
+        {% endif %}
+    </div>
+</body>
+</html>
